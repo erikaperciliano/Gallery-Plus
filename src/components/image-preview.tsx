@@ -7,21 +7,21 @@ export const ImageFilePreviewVariants = tv({
     `
 })
 
-export const imageFilePreviewImageVariants = tv({
+export const imagePreviewImageVariants = tv({
     base: `
         w-full h-full object-cover
     `
 })
 
-interface ImageFilePreviewProps extends React.ComponentProps<"img"> {
+interface ImagePreviewProps extends React.ComponentProps<"img"> {
     imageClassName?: string;
 }
 
-export default function ImageFilePreview({className, imageClassName, ...props}: ImageFilePreviewProps) {
+export default function ImagePreview({className, imageClassName, ...props}: ImagePreviewProps) {
     return(
         <div className={ImageFilePreviewVariants(className)}>
             <img 
-                className={imageFilePreviewImageVariants({className: imageClassName})}
+                className={imagePreviewImageVariants({className: imageClassName})}
                 {...props} 
             />
         </div>
