@@ -11,7 +11,7 @@ import InputCheckbox from "../components/input-checkbox";
 import InputSingleFile from "../components/input-single-file";
 import { useForm } from "react-hook-form";
 import ImagePreview from "../components/image-preview";
-import { Dialog, DialogBody, DialogContext, DialogFooter, DialogHeader, DialogTrigger } from "../components/dialog";
+import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from "../components/dialog";
 import Text from "../components/text";
 import { DialogClose } from "@radix-ui/react-dialog";
 
@@ -85,7 +85,7 @@ export default function PageComponents() {
 					<DialogTrigger asChild>
 						<Button>Abrir Modal</Button>
 					</DialogTrigger>
-					<DialogContext>
+					<DialogContent>
 						<DialogHeader>
 							Teste modal
 						</DialogHeader>
@@ -106,7 +106,7 @@ export default function PageComponents() {
 
 							<Button>Adicionar</Button>
 						</DialogFooter>
-					</DialogContext>
+					</DialogContent>
 				</Dialog>
 			</div>
 		</div>

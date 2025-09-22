@@ -30,7 +30,7 @@ export function DialogOverlay({className, ...props}: React.ComponentProps<typeof
     )
 }
 
-export function DialogContext({className, ref, children, ...props}: React.ComponentProps<typeof DialogPrimitive.Content>) {
+export function DialogContent({className, ref, children, ...props}: React.ComponentProps<typeof DialogPrimitive.Content>) {
     return (
         <DialogPrimitive.Portal>
             <DialogOverlay />

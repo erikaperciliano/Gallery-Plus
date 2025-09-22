@@ -19,7 +19,7 @@ interface ImagePreviewProps extends React.ComponentProps<"img"> {
 
 export default function ImagePreview({className, imageClassName, ...props}: ImagePreviewProps) {
     return(
-        <div className={ImageFilePreviewVariants(className)}>
+        <div className={(ImageFilePreviewVariants(), className)}>
             <img 
                 className={imagePreviewImageVariants({className: imageClassName})}
                 {...props} 
