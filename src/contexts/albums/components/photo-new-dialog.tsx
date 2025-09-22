@@ -6,9 +6,9 @@ import Alert from "../../../components/alert";
 import InputSingleFile from "../../../components/input-single-file";
 import ImagePreview from "../../../components/image-preview";
 import Text from "../../../components/text";
-import type { Album } from "../models/album";
 import Skeleton from "../../../components/skeleton";
 import { useForm } from "react-hook-form";
+import useAlbums from "../hooks/use-albums";
 
 interface PhotoNewDialogProps {
     trigger: React.ReactNode;
@@ -16,14 +16,8 @@ interface PhotoNewDialogProps {
 
 export default function PhotoNewDialog({trigger}: PhotoNewDialogProps) {
     const form = useForm();
+    const {albums, isLoadingAlbums} = useAlbums();
 
-    // TODO: Apenas para mock, irei pegar da API em breve
-    const isLoadingAlbum = false;
-    const albums: Album[] = [
-        {id: '3421', title: 'Album 1'},
-        {id: '123', title: 'Album 2'},
-        {id: '456', title: 'Album 2'}
-    ]
 
     return (
         <Dialog>
@@ -55,7 +49,7 @@ export default function PhotoNewDialog({trigger}: PhotoNewDialogProps) {
                         <Text variant="label-small">Selecionar álbums</Text>
 
                         <div className="flex flex-wrap gap-3">
-                            {!isLoadingAlbum && albums.length > 0 && albums.map(album => (
+                            {!isLoadingAlbums && albums.length > 0 && albums.map(album => (
                                 <Button
                                     key={album.id}
                                     variant="ghost"
@@ -66,7 +60,7 @@ export default function PhotoNewDialog({trigger}: PhotoNewDialogProps) {
                                 </Button>
                             ))}
 
-                            {isLoadingAlbum && Array.from({length: 5}).map((_, index) => (
+                            {isLoadingAlbums && Array.from({length: 5}).map((_, index) => (
                                 <Skeleton  key={`album-loading-${index}`} className="w-20 h-7" />
                             ))}
                         </div>

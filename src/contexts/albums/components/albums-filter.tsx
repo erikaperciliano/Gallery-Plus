@@ -10,7 +10,7 @@ interface AlbumsFilterProps extends React.ComponentProps<'div'>{
     loading?: boolean;
 }
 
-export default function AlbumsFilter({albums, loading, className, ...props}: AlbumsFilterProps){
+export default function AlbumsFilter({loading, className, albums, ...props}: AlbumsFilterProps){
     return(
         <div className={cx("flex items-center gap-3.5 overflow-x-auto", className)} {...props}>
             <Text variant="heading-small">Álbuns</Text>
