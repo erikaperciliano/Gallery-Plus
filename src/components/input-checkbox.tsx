@@ -5,7 +5,12 @@ import {type VariantProps, tv} from "tailwind-variants";
 export const inputCheckboxWrapperVariants = tv({
     base: `
         inline-flex items-center justify-center relative group
-    `
+    `,
+    variants: {
+        disabled: {
+            true: 'pointer-events-none opacity-80'
+        }
+    }
 });
 
 export const inputCheckboxVariants = tv({
@@ -26,9 +31,6 @@ export const inputCheckboxVariants = tv({
         size: {
             sm: "w-3 h-3 rounded-sm",
             md: "w-5 h-5 rounded-sm"
-        },
-        disabled: {
-            true: "pointer-events-none"
         }
     },
     defaultVariants: {
@@ -55,12 +57,12 @@ export const inputCheckboxIconVariants = tv({
     }
 });
 
-interface InputCheckboxProps extends VariantProps<typeof inputCheckboxVariants>, Omit<React.ComponentProps<"input">, "size" | "disabled"> {}
+interface InputCheckboxProps extends VariantProps<typeof inputCheckboxVariants>, Omit<React.ComponentProps<"input">, "size"> {}
 
 export default function InputCheckbox({ variant, size, disabled, className, ...props }: InputCheckboxProps) {
     return (
-        <label className={inputCheckboxWrapperVariants({className})}>
-            <input type="checkbox" {...props} className={inputCheckboxVariants({variant, size, disabled})}/>
+        <label className={inputCheckboxWrapperVariants({className, disabled})}>
+            <input type="checkbox" {...props} className={inputCheckboxVariants({variant, size})}/>
             <Icon svg={CheckIcon} className={inputCheckboxIconVariants({size})}/>
         </label>
     )
