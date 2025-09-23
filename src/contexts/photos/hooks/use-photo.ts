@@ -16,7 +16,8 @@ export default function usePhoto(id?: string) {
 
     return {
         photo: data,
-        nextPhotoId: data?.previousPhotoId,
+        nextPhotoId: data?.nextPhotoId,
+        previousPhotoId: data?.previousPhotoId,
         isLoadingPhoto: isLoading
     }
 
