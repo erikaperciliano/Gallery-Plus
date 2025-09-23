@@ -12,6 +12,7 @@ import useAlbums from "../hooks/use-albums";
 import { photoNewFormSchema, type PhotoNewFormSchema } from "../../photos/schemas";
 import {zodResolver} from '@hookform/resolvers/zod'
 import usePhoto from "../../photos/hooks/use-photo";
+import { useNavigate } from "react-router";
 
 interface PhotoNewDialogProps {
     trigger: React.ReactNode;
@@ -31,6 +32,8 @@ export default function PhotoNewDialog({trigger}: PhotoNewDialogProps) {
     const fileSource = file?.[0] ? URL.createObjectURL(file[0]) : undefined;
 
     const albumsIds = form.watch('albumsIds')
+
+     const navigate = useNavigate()
 
     useEffect(() => {
         if(!modalOpen) {
@@ -55,6 +58,7 @@ export default function PhotoNewDialog({trigger}: PhotoNewDialogProps) {
         setIsCreatingPhoto(async () => {
             await createPhoto(payload);
             setModalOpen(false);
+            navigate("/"); 
         })
     }
 
