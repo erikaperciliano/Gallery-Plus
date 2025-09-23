@@ -42,8 +42,8 @@ export default function PhotoNewDialog({trigger}: PhotoNewDialogProps) {
     },[modalOpen, form])
     
     function handleToggleAlbum(albumId: string) {
-        const albumsIds = form.getValues('albumsIds')
-        const albumsSet = new Set(albumsIds)
+        const albumsIds = form.getValues('albumsIds')  || [];
+        const albumsSet = new Set(albumsIds);
 
         if(albumsSet.has(albumId)) {
             albumsSet.delete(albumId)
